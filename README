@@ -1,9 +1,5 @@
 ### README for session.el: Session Management for Emacs
 
-## Copyright 2002 Free Software Foundation, Inc.
-##
-## Author: Christoph Wedler <wedler@users.sourceforge.net>
-## Keywords: Emacs, session, session management, desktop, data, tools
 ## X-URL: http://emacs-session.sourceforge.net/
 
 
@@ -13,11 +9,77 @@ containing recently changed/visited files and restores the places (e.g.,
 point) of such a file when you revisit it.
 
 
-Files in the distribution (top level directory "session"):
+Changes 2.4b vs 2.4a:
+ * Emacs would sometimes try to open a remote connection when using the
+   menus.
 
- * README: this file
- * INSTALL: how to install "lisp/session.el"
- * lisp/session.el: main file
- * lisp/ChangeLog: its detailed ChangeLog file
+Changes 2.4a vs 2.4:
+ * With Emacs before 24.4, (eval-after-load 'session FORM) would
+   have FORM evaluated before package session has been loaded.
 
-## README ends here
+Changes 2.4 vs 2.3a:
+ * Do not write text properties of strings into session file,
+   as they might be unreadable in the next Emacs session.
+ * Make session correctly save rings.
+ * Make session better interact with package anything.
+ * Miscellaneous.
+
+Changes 2.3a vs 2.3:
+ * Make session better interact with org-mode.
+
+Changes 2.3 vs 2.2a:
+ * Bug fix: Saving the session file would infloop due to
+   variables with recursive values (often in rings).
+ * Bug fix: Exiting Emacs might have failed due to buffers
+   visiting remote files with lost connections.
+ * Use Emacs user directory for session save file.
+ * Installation now works via customization.
+ * Improve file menus.
+ * Miscellaneous.
+
+Changes 2.2a vs 2.2:
+ * Miscellaneous.
+
+Changes 2.2 vs 2.1c:
+ * Improve "jump to the position of the last change", now
+   jumps successively to change positions by repeated
+   invocation of the command.  Better computation of undo
+   positions.
+
+Changes 2.1c vs 2.1b:
+ * Save session file as private file.
+ * Use same sequence for the new two File submenus on Emacs
+   and XEmacs, the XEmacs one was the intended one.
+
+Changes 2.1b vs 2.1a:
+ * Make sure that the user is always asked whether to exit
+   if the session file could not be written.
+
+Notes 2.1a:
+ * Change should fix bug "no such submenu: edit".
+
+Changes 2.1a vs 2.1:
+ * Bug fix: on XEmacs, Initialization would fail without
+   menus "File" and "Edit" in menubar.
+ * Minor bug fixes.  Miscellaneous.
+
+Changes 2.1 vs 1.5a:
+ * Moved to SourceForge.net.  Less technical description on
+   web page.
+ * Menus and keybindings work with Emacs-21, too.  Rename
+   submenus.
+ * Minor bug fixes.  Miscellaneous.
+
+Notes 2.1:
+ * Previous project home page was:
+      http://www.fmi.uni-passau.de/~wedler/session/
+
+Changes 1.5a vs 1.5:
+ * Bug fix: set coding-system to avoid corrupted multi-byte
+   strings.
+ * Bug fix: don't activate mark in Emacs, always set point.
+ * Bug workaround: disable `interprogram-paste-function' of
+   XEmacs in menu.
+ * New command to show history of minibuffer input and to
+   toggle permanent flag.
+ * Miscellaneous improvements.

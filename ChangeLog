@@ -1,8 +1,66 @@
-2011-04-12  Christoph Wedler  <Christoph.Wedler@sap.com>
+2016-06-17  Christoph Wedler  <wedler@users.sourceforge.net>
 
-	* session.el 2.3a: 
+	* session.el 2.4b.
 
-2011-04-12  Christoph Wedler  <Christoph.Wedler@sap.com>
+	* session.el: Emacs would sometimes try to open a remote
+	connection when using the menus.
+	(session-abbrev-file-name): New optional argument.
+	(session-file-changed-menu-filter): Use it instead calling
+	`directory-file-name' directly.
+	(session-abbrev-inhibit-function): New function.
+	(session-default-buffer-check-p): Use it.
+	(session-file-changed-menu-filter): Use it = do not show buffer
+	info for remote files.
+
+2015-03-04  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* session.el 2.4a.
+
+	* session.el: With Emacs before 24.4, (eval-after-load 'session
+	FORM) would have FORM evaluated before package session has been
+	loaded.
+	Reported by Steve Purcell <purcell@users.sourceforge.net>.
+	(session): Move `provide' from beginning to end of file.
+
+2015-02-16  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* session.el 2.4.
+
+2015-02-13  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* session.el: Reading the session file could fail.
+	(session-save-insert-variable): Write strings without text
+	properties - as some, like buffers, could be non-readable.
+	(session-yank-menu-binding): New user option.
+	(session-initialize-keys): Use it.
+	(session-registers): Add (?A . ?Z).
+
+2012-08-23  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* session.el: Make session correctly save rings.  Would not save
+	lists longer than the specified MAX-SIZE.
+	Reported by Le Wang <l26wang@gmail.com>.
+	(session-globals-exclude): Do not exclude `vc-comment-ring'.
+	(session-true-list-p): New function.
+	(session-make-ring): New function.
+	(session-save-insert-variable): Use them.
+
+2011-10-20  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* session.el: Make session better interact with anything.
+	Suggested by Le Wang <l26wang@gmail.com>.
+	(session-globals-exclude): Allow regexps in list, added
+	"\\`anything-c-source-".
+	(session-save-session): Handle these regexps.  Make sure that
+	variables in `session-globals-include' are saved even if matched
+	by element in `session-globals-exclude'.
+	(session-save-insert-variable): Make argument SPEC optional.
+
+2011-04-12  Christoph Wedler  <wedler@users.sourceforge.net>
+
+	* session.el 2.3a.
+
+2011-04-12  Christoph Wedler  <wedler@users.sourceforge.net>
 
 	* session.el: Make session better interact with org-mode.
 	Suggested by Le Wang <l26wang@gmail.com>.
@@ -58,7 +116,7 @@
 	(session-kill-buffer-hook): Check `session-use-package'.
 	(session-save-session): Check `session-use-package' when not used
 	interactively.
-	
+
 	* session.el: New save file, minor installation improvements.
 	(session-save-file): Use Emacs user directory for init value.
 	Suggested by Peter S Galbraith <psg@debian.org>.
